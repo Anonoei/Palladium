@@ -7,7 +7,7 @@ logs/
 moonraker.asvc
 systemd/
 
-config/saved_variables.cfg
 config/.moonraker.conf.bkp
 config/mooncord.json
 config/mainsail.cfg
+config/saved_variables.cfg
