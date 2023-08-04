@@ -5,6 +5,7 @@ database/
 gcodes/
 logs/
 moonraker.asvc
+timelapse/
 systemd/
 
 config/.moonraker.conf.bkp
