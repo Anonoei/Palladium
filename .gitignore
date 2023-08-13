@@ -13,3 +13,4 @@ config/mooncord.json
 config/mainsail.cfg
 config/saved_variables.cfg
 .DS_Store
+.moonraker.uuid
