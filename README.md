@@ -42,3 +42,5 @@
  - [Mount for BTT HDMI5](https://www.teamfdm.com/files/file/618-mount-for-bigtreetech-hdmi5-screen-trident-voron-2xxx/)
  - [Magnetic Panels](https://github.com/VoronDesign/VoronUsers/tree/master/printer_mods/bobbleheed/Magnetic_Panels)
  - [Z Belt Clips](https://github.com/VoronDesign/VoronUsers/tree/master/printer_mods/ChenTheDesignMaker/Z_Belt_Clip)
+ - [Bed Fans](https://github.com/VoronDesign/VoronUsers/tree/master/printer_mods/Ellis/Bed_Fans)
+ - [ERCF](https://github.com/EtteGit/EnragedRabbitProject)
