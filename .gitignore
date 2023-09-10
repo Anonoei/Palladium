@@ -4,13 +4,14 @@ comms/
 database/
 gcodes/
 logs/
-moonraker.asvc
-timelapse/
+octoeverywhere-store/
 systemd/
+timelapse/
 
+.moonraker.uuid
+moonraker.asvc
+
+.DS_Store
 config/.moonraker.conf.bkp
-config/mooncord.json
 config/mainsail.cfg
 config/saved_variables.cfg
-.DS_Store
-.moonraker.uuid
