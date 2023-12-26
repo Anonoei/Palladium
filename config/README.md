@@ -1,0 +1,202 @@
+# Palladium Configuration
+
+# Table of Contents
+ - Dev
+ - Hardware
+   - **MMU**
+   - **Toolhead**
+ - Macros
+   - **Aliases**
+     - *extruder.cfg*
+       - _SET_EXTRUDE: Set extrusion factor
+       - _EXTRUDE_ABSOLUTE: Runs M82 (absolute)
+       - _EXTRUDE_RELATIVE: Runs M83 (relative)
+       - _EXTRUDER_ZERO: Runs G92 E0 (relative zero)
+     - *heater.cfg*
+       - SET_HEATER_TEMPERATURE
+       - TURN_OFF_HEATERS
+       - M109: Wait for extruder temp
+       - M190: Wait for bed temp
+       - M104: Set extruder temp
+       - M140: Set bed temp
+     - *movement.cfg*
+       - _POSITION_ABSOLUTE: Runs G90 (absolute)
+       - _POSITION_RELATIVE: Runs G91 (relative)
+       - STEPPERS_OFF: Runs M84 (steppers off)
+       - _SET_SPEED: Set speed factor
+       - G32: Home axes, level, then home again
+     - *other.cfg*
+       - CLEAR_DISPLAY: Runs M117 (clear display)
+       - _CLEAR_BUFFER: Runs M400 (wait before continuing)
+       - _PAUSE: Runs G4 (pause for specified milliseconds)
+     - *retract.cfg*
+       - G10: Runs _CLIENT_RETRACT
+       - G11: Runs _CLIENT_EXTRUDE
+     - *shutdown.cfg*
+       - FIRMWARE_RESTART: Overrides firmware restart to center toolhead
+   - **Base**
+     - *compatibility.cfg*
+       - START_PRINT: Runs PRINT_START
+       - END_PRINT: Runs PRINT_END
+       - M701: Runs FILAMENT_LOAD
+       - M702: Runs FILAMENT_UNLOAD
+       - M600: Runs FILAMENT_CHANGE
+       - M125: Runs PARK
+       - M900: Runs SET_PRESSURE_ADVANCE
+       - M204: Runs SET_VELOCITY_LIMIT (accel and accel to decel)
+       - M205: Runs SET_VELOCITY_LIMIT (square corner velocity)
+       - G00: Runs G0
+       - G01: Runs G1
+       - G02: Runs G2
+       - G03: Runs G2
+       - G04: Runs G4
+     - *log.cfg*
+       - _LOG: Logs messages from macros
+     - *QoL.cfg*
+       - OFF_IN: Turns printer off after specified minutes
+       - FORCE_HOME: Forces the printer to be homed before running other macro
+       - FORCE_CLEAR: Forces the bed to be clear before running other macro
+       - BED_CLEARED: Sets the bed to clear
+       - BED_STATUS: Prints bed status
+     - *sync.cfg*
+       - SET_SURFACE: Set probe offset based on build surface
+       - SET_FILAMENT: Set PA/Retraction based on filament
+       - SET_NOZZLE: Adjust Z_OFFSET based on nozzle size
+       - _SYNC_SETTINGS: Sync printer settings with settings file
+   - **Convenience**
+     - *bucket.cfg*
+       - _PARK_BUCKET: Parks the toolhead at the bucket
+     - *eject.cfg*
+       - EJECT_PARTS: Automatically ejects parts from the bed
+     - *filament.cfg*
+       - FILAMENT_LOAD: Loads filament
+       - FILAMENT_UNLOAD: Unloads filament
+       - FILAMENT_CHANGE: Runs unload, pauses, then runs load
+       - _FILAMENT_INSERT: Runs when filament is inserted
+       - _FILAMENT_RUNOUT: Runs when filament runs out
+     - *heatsoak.cfg*
+       - SOAK_BED: Heatsoaks the bed for the specified time
+       - SOAK_CHAMBER: Heatsoak until chamber reaches temperature
+       - SOAK_INT: Interruptable heatsoak
+     - *purge.cfg*
+       - LINE_PURGE: Purges a line near parts
+     - *retract.cfg*
+       - _CLIENT_EXTRUDE: Extrudes
+       - _CLIENT_RETRACT: Retracts
+     - *wipe.cfg*
+       - NOZZLE_WIPE: Wipes the nozzle on brush
+       - NOZZLE_SCRAPE: Scrapes nozzle against the bed to remove filament
+   - **Fans**
+     - *bed_fans.cfg*
+       - _SET_BEDFANS: helper for other bedfan macros
+       - BEDFANS_OFF: Turns bed fans off
+       - BEDFANS_HEAT: Set bed fans to heat mode
+       - BEDFANS_SLOW: Set bed fans to slow mode
+       - BEDFANS_FAST: Set bed fans to fast mode
+       - BEDFANS_FULL: set bed fans to 100%
+     - *loop.cfg*
+       - _FANS_LOOP: Checks printer status for controlling fan macros
+     - *mcu_fans.cfg*
+       - _SET_MCUFANS: helper for other mcufan macros
+       - MCUFANS_IDLE: Set mcu fans to idle temp
+       - MCUFANS_OFF: Set mcu fans to off temp
+       - MCUFANS_PRINT: Set mcu fans to print temp
+     - *nevermore.cfg*
+       - _SET_NEVERMORE: helper for other nevermore macros
+       - NEVERMORE_OFF: Turns nevermore off
+       - NEVERMORE_ON: Turns nevermore on
+       - RESET_NEVERMORE: Resets filter time
+       - QUERY_NEVERMORE: Prints filter time since last reset
+       - _NEVERMORE_FILTER_TIMER: Manages the filter timer
+       - _NEVERMORE_FLUSH_TIMER: Sets filter time
+   - **Helpers**
+     - *config_backup.cfg*
+       - backup_cfg: Backs up printer config to GitHub
+   - **Image**
+     - *beep.cfg*
+       - M300: Plays a frequency for a duration at a volume
+       - _PLAY_NOTE: Plays a note by providing it's value, octave, duration, and volume
+       - PLAY: Plays a note by defining it's key, octave, duration, and volume
+     - *tunes.cfg*
+       - _PLAY_STARTUP
+       - _PLAY_SHUTDOWN
+       - _PLAY_PRINT_START
+       - _PLAY_PRINT_END
+       - _PLAY_HEAT_COMPLETE
+       - _PLAY_FILAMENT_RUNOUT
+       - _PLAY_FILAMENT_DETECTED
+       - _PLAY_FILAMENT_LOAD
+       - _PLAY_FILAMENT_UNLOAD
+       - _PLAY_SONG_DOOM
+       - 
+   - **LEDs**
+     - *base.cfg*
+       - _SET_LED: Sets LED to specified color
+     - *printer.cfg*
+       - _SET_PR_PWM_LED_BY_NAME: Set PWM LED by name
+       - _SET_PR_RGB_LED_BY_NAME: Set RGB LED by name
+       - _SET_PR_STATUS: Sets LEDs from _SET_STATUS
+     - *states.cfg*
+       - _SET_STATUS: Sets LED colors based on different events
+     - *toolhead.cfg*
+       - _SET_TH_LEDS : Set TH LEDs to specified color
+       - _SET_TH_STATUS: Set TH LEDs from _SET_STATUS
+   - **MMU**
+     - *callback.cfg*
+       - _MMU_PRE_UNLOAD: Pre-unload for filament change
+       - _MMU_POST_LOAD: Post-load for filament change
+       - _MMU_ENDLESS_SPOOL_PRE_UNLOAD
+       - _MMU_ENDLESS_SPOOL_POST_LOAD
+     - *loading.cfg*
+       - _MMU_LOAD_SEQUENCE : Sequence for loading filament
+       - _MMU_UNLOAD_SEQUENCE: Sequence for unloading filament
+     - *mmu.cfg*
+     - *QoL.cfg*
+       - SET_MMU_GATE: Set MMU gate material/brand/color
+       - MMU_GATES: Prints MMU gate material/brand/color
+       - SET_TOOL: Finds which tool matches provided material/brand/color
+       - _MMU_ACTION_CHANGED: Runs _SET_STATUS on MMU action changes
+     - *tip_forming.cfg*
+       _MMU_FORM_TIP_STANDALONE: Forms filament tip
+     - *toolchange.cfg*
+       - _SET_GATE: Helper for T# macros
+       - T0-5: Set's MMU tool
+   - **Move**
+     - *homing.cfg*
+       - _CG28: Conditional G28 (home if not homed)
+       - homing_override: Overrides default G28 for safety hop and sensorless homing
+       - _HOME_X: Homes the X axis
+       - _HOME_Y: Homes the Y axis
+       - _HOME_Z: Homes the Z axis
+       - CALC_Z: Runs AUTO_TAP
+     - *leveling.cfg*
+       - LEVEL: Universally levels the printer
+       - QUAD_GANTRY_LEVEL: Override to call LEVEL
+       - _CLEVEL: Conditional level (level if not leveled)
+     - *mesh.cfg*
+       - BED_MESH_CALIBRATE: Adaptive bed mesh
+     - *park.cfg*
+       - PARK: Parks the toolhead at given position
+   - **Print**
+     - *end.cfg*
+       - PRINT_END: Called by slicer at the end of print
+       - PRINT_CONCLUDE: Cleans up toolhead after print
+     - *layer.cfg*
+       - _LAYER_BEFORE_CHANGE: Helper for running macros before layer change
+       - _LAYER_AFTER_CHANGE: Helper for running macros after layer change
+     - *setters.cfg*
+       - SET_PAUSE_NEXT_LAYER: Pauses when the next layer is reached
+       - SET_PAUSE_AT_LAYER: Pauses when the specified layer is reached
+       - SET_PRINT_STATS_INFO: Override to enable the PAUSE helpers above
+     - *start.cfg*
+       - PRINT_START: Called by slicer before starting print
+       - PRINT_PREPAARE: Prepares the printer for printing
+   - *state.cfg*
+     - _STATE_ON: Run when the printer is turned on
+     - _STATE_ACTIVE: Run when the printer is active
+     - _STATE_OFF: Turns the printer off
+ - *printer.cfg*: Includes all hardware/macro configurations
+ - *settings.cfg*
+   - GET_CONFIG: Prints config value from name
+   - SET_CONFIG: Sets config name to a value
+   - _CONFIG: Wrapper that holds all configuration values
