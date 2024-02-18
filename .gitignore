@@ -1,12 +1,5 @@
-backup/
-certs/
-comms/
-database/
-gcodes/
-logs/
-octoeverywhere-store/
-systemd/
-timelapse/
+!config/
+*/
 
 .moonraker.uuid
 moonraker.asvc
@@ -16,3 +9,4 @@ config/.moonraker.conf.bkp
 config/mainsail.cfg
 config/saved_variables.cfg
 config/timelapse.cfg
+config/mmu
