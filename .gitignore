@@ -1,12 +1,30 @@
-!config/
-*/
+.DS_Store
 
-.moonraker.uuid
+*/
+!config/
+
+config/saved_variables.cfg
 moonraker.asvc
 
-.DS_Store
-config/.moonraker.conf.bkp
-config/mainsail.cfg
-config/saved_variables.cfg
+# Secrets
+.moonraker.uuid
+config/mobileraker.conf
+
+# Linked files
 config/timelapse.cfg
-config/mmu
+
+## Backups
+config/.moonraker.conf.bkp
+config/printer-*.cfg
+
+## Happy Hare
+config/mmu/base/mmu_cut_tip.cfg
+config/mmu/base/mmu_form_tip.cfg
+config/mmu/base/mmu_leds.cfg
+config/mmu/base/mmu_sequence.cfg
+config/mmu/base/mmu_software.cfg
+config/mmu/base/mmu_state.cfg
+
+config/mmu/optional/client_macros.cfg
+config/mmu/optional/mmu_menu.cfg
+
