@@ -1,0 +1,16 @@
+[delayed_gcode _FANS_LOOP]
+gcode:
+    {% if printer.heater_bed.target >= printer["gcode_macro _CONFIG"].bedfans_threshold %}								# Continue only if target temp greater than threshold.
+        {% if printer.heater_bed.temperature|int >= (printer.heater_bed.target|int - 1) %}
+            BEDFANS_FAST															# If within 1 degree of target temp: Higher speed fans
+            {% if printer.print_stats.state == "printing" %}
+                NEVERMORE_ON
+            {% endif %}
+        {% endif %}
+    {% else %}
+        {% if printer.heater_bed.temperature|int <= 50 %}
+            BEDFANS_OFF
+            NEVERMORE_OFF
+        {% endif %}
+    {% endif %}
+    UPDATE_DELAYED_GCODE ID=_FANS_LOOP DURATION=30						# If temp not reached yet: loop again
