@@ -9,6 +9,7 @@ moonraker.asvc
 # Secrets
 .moonraker.uuid
 config/mobileraker.conf
+config/KlipperScreen.conf
 
 # Linked files
 config/timelapse.cfg

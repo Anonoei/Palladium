@@ -2,12 +2,11 @@
 
 # Table of Contents
  - Dev
- - Hardware
-   - **MMU**
-   - **Toolhead**
+ - [Hardware](https://github.com/Anonoei/Palladium/tree/main/config/hardware)
+   - [Toolhead](https://github.com/Anonoei/Palladium/tree/main/config/hardware/toolhead)
  - Macros
-   - **Aliases**
-     - *extruder.cfg*
+   - [**Aliases**](https://github.com/Anonoei/Palladium/tree/main/config/macros/aliases)
+     - *extruder.cfg*, aliases for common extrusion commands
        - _SET_EXTRUDE: Set extrusion factor
        - _EXTRUDE_ABSOLUTE: Runs M82 (absolute)
        - _EXTRUDE_RELATIVE: Runs M83 (relative)
@@ -15,9 +14,9 @@
      - *heater.cfg*
        - SET_HEATER_TEMPERATURE
        - TURN_OFF_HEATERS
-       - M109: Wait for extruder temp
-       - M190: Wait for bed temp
-       - M104: Set extruder temp
+       - M109: Set and wait for hotend temp
+       - M190: Set and wait for bed temp
+       - M104: Set hotend temp
        - M140: Set bed temp
      - *movement.cfg*
        - _POSITION_ABSOLUTE: Runs G90 (absolute)
@@ -34,36 +33,26 @@
        - G11: Runs _CLIENT_EXTRUDE
      - *shutdown.cfg*
        - FIRMWARE_RESTART: Overrides firmware restart to center toolhead
-   - **Base**
+   - [**Base**](https://github.com/Anonoei/Palladium/tree/main/config/macros/base)
      - *compatibility.cfg*
-       - START_PRINT: Runs PRINT_START
-       - END_PRINT: Runs PRINT_END
-       - M701: Runs FILAMENT_LOAD
-       - M702: Runs FILAMENT_UNLOAD
-       - M600: Runs FILAMENT_CHANGE
-       - M125: Runs PARK
-       - M900: Runs SET_PRESSURE_ADVANCE
-       - M204: Runs SET_VELOCITY_LIMIT (accel and accel to decel)
-       - M205: Runs SET_VELOCITY_LIMIT (square corner velocity)
-       - G00: Runs G0
-       - G01: Runs G1
-       - G02: Runs G2
-       - G03: Runs G2
-       - G04: Runs G4
-     - *log.cfg*
-       - _LOG: Logs messages from macros
+       - Various compatability gcodes/macros
+    - *loop.cfg*: Runs timed updates/checks
+       - DELAYED_WIPE: wipe when below specified temperature
+       - DELAYED_EJECT: eject when below specified temperature
      - *QoL.cfg*
        - OFF_IN: Turns printer off after specified minutes
        - FORCE_HOME: Forces the printer to be homed before running other macro
        - FORCE_CLEAR: Forces the bed to be clear before running other macro
        - BED_CLEARED: Sets the bed to clear
        - BED_STATUS: Prints bed status
+       - _MACRO_ENTRY: Wrapper for SAVE_GCODE_STATE
+       - _MACRO_EXIT: Wrapper for RESTORE_GCODE_STATE
      - *sync.cfg*
        - SET_SURFACE: Set probe offset based on build surface
        - SET_FILAMENT: Set PA/Retraction based on filament
        - SET_NOZZLE: Adjust Z_OFFSET based on nozzle size
        - _SYNC_SETTINGS: Sync printer settings with settings file
-   - **Convenience**
+   - [**Convenience**](https://github.com/Anonoei/Palladium/tree/main/config/macros/convenience)
      - *bucket.cfg*
        - _PARK_BUCKET: Parks the toolhead at the bucket
      - *eject.cfg*
@@ -86,7 +75,7 @@
      - *wipe.cfg*
        - NOZZLE_WIPE: Wipes the nozzle on brush
        - NOZZLE_SCRAPE: Scrapes nozzle against the bed to remove filament
-   - **Fans**
+   - [**Fans**](https://github.com/Anonoei/Palladium/tree/main/config/macros/fans)
      - *bed_fans.cfg*
        - _SET_BEDFANS: helper for other bedfan macros
        - BEDFANS_OFF: Turns bed fans off
@@ -94,8 +83,6 @@
        - BEDFANS_SLOW: Set bed fans to slow mode
        - BEDFANS_FAST: Set bed fans to fast mode
        - BEDFANS_FULL: set bed fans to 100%
-     - *loop.cfg*
-       - _FANS_LOOP: Checks printer status for controlling fan macros
      - *mcu_fans.cfg*
        - _SET_MCUFANS: helper for other mcufan macros
        - MCUFANS_IDLE: Set mcu fans to idle temp
@@ -109,10 +96,10 @@
        - QUERY_NEVERMORE: Prints filter time since last reset
        - _NEVERMORE_FILTER_TIMER: Manages the filter timer
        - _NEVERMORE_FLUSH_TIMER: Sets filter time
-   - **Helpers**
+   - [**Helpers**](https://github.com/Anonoei/Palladium/tree/main/config/macros/helpers)
      - *config_backup.cfg*
        - backup_cfg: Backs up printer config to GitHub
-   - **Image**
+   - [**Image**](https://github.com/Anonoei/Palladium/tree/main/config/macros/image)
      - *beep.cfg*
        - M300: Plays a frequency for a duration at a volume
        - _PLAY_NOTE: Plays a note by providing it's value, octave, duration, and volume
@@ -128,8 +115,7 @@
        - _PLAY_FILAMENT_LOAD
        - _PLAY_FILAMENT_UNLOAD
        - _PLAY_SONG_DOOM
-       - 
-   - **LEDs**
+   - [**LEDs**](https://github.com/Anonoei/Palladium/tree/main/config/macros/leds)
      - *base.cfg*
        - _SET_LED: Sets LED to specified color
      - *printer.cfg*
@@ -141,27 +127,22 @@
      - *toolhead.cfg*
        - _SET_TH_LEDS : Set TH LEDs to specified color
        - _SET_TH_STATUS: Set TH LEDs from _SET_STATUS
-   - **MMU**
-     - *callback.cfg*
-       - _MMU_PRE_UNLOAD: Pre-unload for filament change
-       - _MMU_POST_LOAD: Post-load for filament change
-       - _MMU_ENDLESS_SPOOL_PRE_UNLOAD
-       - _MMU_ENDLESS_SPOOL_POST_LOAD
-     - *loading.cfg*
-       - _MMU_LOAD_SEQUENCE : Sequence for loading filament
-       - _MMU_UNLOAD_SEQUENCE: Sequence for unloading filament
-     - *mmu.cfg*
+   - [**MMU**](https://github.com/Anonoei/Palladium/tree/main/config/macros/mmu)
      - *QoL.cfg*
        - SET_MMU_GATE: Set MMU gate material/brand/color
        - MMU_GATES: Prints MMU gate material/brand/color
        - SET_TOOL: Finds which tool matches provided material/brand/color
        - _MMU_ACTION_CHANGED: Runs _SET_STATUS on MMU action changes
-     - *tip_forming.cfg*
-       _MMU_FORM_TIP_STANDALONE: Forms filament tip
      - *toolchange.cfg*
        - _SET_GATE: Helper for T# macros
        - T0-5: Set's MMU tool
-   - **Move**
+   - [**Move**](https://github.com/Anonoei/Palladium/tree/main/config/macros/move)
+     - [**Probe**](https://github.com/Anonoei/Palladium/tree/main/config/macros/move/probe)
+       - *probe.cfg*, wrapper for specific probe types
+         - PROBE_PRE: Called prior to performing probe
+         - PROBE_POS: Called after performing probe
+       - *klicky.cfg*, klicky macros
+       - *tap.cfg*, Voron TAP macros
      - *homing.cfg*
        - _CG28: Conditional G28 (home if not homed)
        - homing_override: Overrides default G28 for safety hop and sensorless homing
@@ -177,7 +158,8 @@
        - BED_MESH_CALIBRATE: Adaptive bed mesh
      - *park.cfg*
        - PARK: Parks the toolhead at given position
-   - **Print**
+     - *probe_wrap*, wrappers to ensure PROBE_PRE/POS is called
+   - [**Print**](https://github.com/Anonoei/Palladium/tree/main/config/macros/print)
      - *end.cfg*
        - PRINT_END: Called by slicer at the end of print
        - PRINT_CONCLUDE: Cleans up toolhead after print
@@ -190,7 +172,11 @@
        - SET_PRINT_STATS_INFO: Override to enable the PAUSE helpers above
      - *start.cfg*
        - PRINT_START: Called by slicer before starting print
-       - PRINT_PREPAARE: Prepares the printer for printing
+       - PRINT_PREPARE: Prepares the printer for printing
+     - *states.cfg*
+       - CANCEL_PRINT
+       - PAUSE
+       - RESUME
    - *state.cfg*
      - _STATE_ON: Run when the printer is turned on
      - _STATE_ACTIVE: Run when the printer is active
