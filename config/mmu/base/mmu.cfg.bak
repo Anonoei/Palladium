@@ -1,0 +1,97 @@
+########################################################################################################################
+# Happy Hare MMU Software
+#
+# EDIT THIS FILE BASED ON YOUR SETUP
+#
+# Copyright (C) 2022-2025  moggieuk#6538 (discord)
+#                          moggieuk@hotmail.com
+# This file may be distributed under the terms of the GNU GPLv3 license.
+#
+# Goal: Happy Hare MMU hardware pin config
+#
+# (\_/)
+# ( *,*)
+# (")_(") Happy Hare Ready
+#
+#
+# This contains aliases for pins for MCU type MMB10
+#
+[mcu mmu]
+canbus_uuid: ecd3380f23bb
+
+
+# PIN ALIASES FOR MMU MCU BOARD ----------------------------------------------------------------------------------------
+# ██████╗ ██╗███╗   ██╗     █████╗ ██╗     ██╗ █████╗ ███████╗
+# ██╔══██╗██║████╗  ██║    ██╔══██╗██║     ██║██╔══██╗██╔════╝
+# ██████╔╝██║██╔██╗ ██║    ███████║██║     ██║███████║███████╗
+# ██╔═══╝ ██║██║╚██╗██║    ██╔══██║██║     ██║██╔══██║╚════██║
+# ██║     ██║██║ ╚████║    ██║  ██║███████╗██║██║  ██║███████║
+# ╚═╝     ╚═╝╚═╝  ╚═══╝    ╚═╝  ╚═╝╚══════╝╚═╝╚═╝  ╚═╝╚══════╝
+# Section to create alias for pins used by MMU for easier integration into Klippain and RatOS. The names match those
+# referenced in the mmu_hardware.cfg file. If you get into difficulty you can also comment out this aliases definition
+# completely and configure the pin names directly into mmu_hardware.cfg. However, use of aliases is encouraged.
+
+# Note: that aliases are not created for TOOLHEAD_SENSOR, EXTRUDER_SENSOR or SYNC_FEEDBACK_SENSORS because those are
+# most likely on the printer's main mcu. These should be set directly in mmu_hardware.cfg
+#
+[board_pins mmu]
+mcu: mmu # Assumes using an external / extra mcu dedicated to MMU
+aliases:
+aliases_motors:
+    MOT1_EN=PB8,  MOT1_STEP=PB15, MOT1_DIR=PB14, MOT1_CS=PA10, MOT1_DIAG=PA3,
+    MOT2_EN=PD1,  MOT2_STEP=PD2,  MOT2_DIR=PB13, MOT2_CS=PC7,  MOT2_DIAG=PA4,
+    MOT3_EN=PA15, MOT3_STEP=PD0,  MOT3_DIR=PD3,  MOT3_CS=PC6,  #MOT3_DIAG=PB9,
+    MOT4_EN=PB5,  MOT4_STEP=PB6,  MOT4_DIR=PB7,  MOT4_CS=PA9,  #MOT4_DIAG=PA8,
+aliases_endstop:
+   MOT=PA0, SENSOR=PA1,
+   STP1 =PA3,  STP2 =PA4,  STP3 =PB9,  STP4 =PA8, 
+   STP5 =PC15, STP6 =PC13, STP7 =PC14, STP8 =PB12,
+   STP9 =PB11, STP10=PB10, STP11=PB2
+aliases_rgb:
+    RGB=PA2
+aliases_mmu:
+    MMU_GEAR_ENABLE = MOT1_EN,
+    MMU_GEAR_STEP   = MOT1_STEP,
+    MMU_GEAR_DIR    = MOT1_DIR,
+    MMU_GEAR_UART   = MOT1_CS,
+    MMU_GEAR_DIAG   = MOT1_DIAG,
+
+    MMU_SEL_ENABLE  = MOT2_EN,
+    MMU_SEL_STEP    = MOT2_STEP,
+    MMU_SEL_DIR     = MOT2_DIR,
+    MMU_SEL_UART    = MOT2_CS,
+    MMU_SEL_DIAG    = MOT2_DIAG,
+
+    MMU_SEL_ENDSTOP=STP11,
+    MMU_SEL_SERVO=MOT,
+
+    MMU_ENCODER=SENSOR,
+    MMU_GATE_SENSOR=,
+    MMU_NEOPIXEL=RGB,
+
+    MMU_PRE_GATE_0=STP1,
+    MMU_PRE_GATE_1=STP2,
+    MMU_PRE_GATE_2=STP3,
+    MMU_PRE_GATE_3=STP4,
+    MMU_PRE_GATE_4=STP5,
+    MMU_PRE_GATE_5=STP6,
+    MMU_PRE_GATE_6=STP7,
+    MMU_PRE_GATE_7=STP8,
+    MMU_PRE_GATE_8=,
+    MMU_PRE_GATE_9=,
+    MMU_PRE_GATE_10=,
+    MMU_PRE_GATE_11=,
+
+    MMU_POST_GEAR_0=,
+    MMU_POST_GEAR_1=,
+    MMU_POST_GEAR_2=,
+    MMU_POST_GEAR_3=,
+    MMU_POST_GEAR_4=,
+    MMU_POST_GEAR_5=,
+    MMU_POST_GEAR_6=,
+    MMU_POST_GEAR_7=,
+    MMU_POST_GEAR_8=,
+    MMU_POST_GEAR_9=,
+    MMU_POST_GEAR_10=,
+    MMU_POST_GEAR_11=,
+
