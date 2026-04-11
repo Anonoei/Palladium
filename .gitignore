@@ -5,6 +5,6 @@ saved_variables.cfg
 *.swp
 *.tmp
 printer-[0-9]*_[0-9]*.cfg
-*.bak
+go2rtc_linux_amd64.bak
 *.bkp
 *.zip
