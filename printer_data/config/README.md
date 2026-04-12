@@ -189,7 +189,15 @@
 
 
 ## Flash
-1. cd ~/klipper && make menuconfig ~/printer_data/config/ukam/octopus-pro_usb.config
-2. make
-3. cd ~/katapult
-4. 
+### MCU
+1. Double press reset on octopus
+2. cp ~/printer_data/config/ukam/octopus-pro_usb.config ~/klipper/.config
+   - if prompted, press y
+3. cd ~/klipper && make flash FLASH_DEVICE=/dev/serial/by-id/usb-katapult_stm32f446xx_53002D000951303532383235-if00
+
+### Toolhead
+1. Double press reset on EBB36
+2. cp ~/printer_data/config/ukam/ebb36-v1.2_can.config ~/klipper/.config
+   - if prompted, press y
+3. cd ~/klipper && make
+4. ~/klippy-env/bin/python3 ~/katapult/scripts/flashtool.py -i can0 -f ~/klipper/out/klipper.bin -u febbc1ab194b
