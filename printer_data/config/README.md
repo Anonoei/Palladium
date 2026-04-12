@@ -186,3 +186,10 @@
    - GET_CONFIG: Prints config value from name
    - SET_CONFIG: Sets config name to a value
    - _CONFIG: Wrapper that holds all configuration values
+
+
+## Flash
+1. cd ~/klipper && make menuconfig ~/printer_data/config/ukam/octopus-pro_usb.config
+2. make
+3. cd ~/katapult
+4. 
