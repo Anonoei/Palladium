@@ -7,4 +7,6 @@ saved_variables.cfg
 printer-[0-9]*_[0-9]*.cfg
 go2rtc_linux_amd64.bak
 *.bkp
+*.csv
 *.zip
+ShakeTune_results
